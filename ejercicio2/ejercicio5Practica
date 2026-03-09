@@ -1,0 +1,39 @@
+class ServidorMinecraft:
+
+    def __init__(self):
+        self.jugadores = []
+        self.diamantes = []
+        self.capacidad = 10
+
+    def agregar_jugador(self, nombre, d):
+        if len(self.jugadores) < self.capacidad:
+            self.jugadores.append(nombre)
+            self.diamantes.append(d)
+        else:
+            print("Servidor lleno")
+
+    def stacks_diamantes(self):
+        for i in range(len(self.jugadores)):
+            stacks = self.diamantes[i] // 64
+            print(self.jugadores[i], "tiene", stacks, "stacks de diamantes")
+
+    def jugador_mas_diamantes(self):
+        max_d = max(self.diamantes)
+        indice = self.diamantes.index(max_d)
+        print("Jugador con más diamantes:", self.jugadores[indice])
+
+    def total_diamantes(self):
+        total = sum(self.diamantes)
+        print("Total de diamantes en el servidor:", total)
+
+
+# instancia del servidor
+s = ServidorMinecraft()
+
+s.agregar_jugador("Alex", 120)
+s.agregar_jugador("Steve", 65)
+s.agregar_jugador("Juan", 40)
+
+s.stacks_diamantes()
+s.jugador_mas_diamantes()
+s.total_diamantes()
